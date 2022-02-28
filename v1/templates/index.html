@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %}
+
+<h2>Clasificador de texto</h2>
+
+<div>
+
+<br>
+<br>
+
+    <form id="upload-file" method="post" enctype="multipart/form-data">
+        <label for="imageUpload" class="upload-label">
+            Seleccionar archivo (.csv)...
+        </label>
+        <input type="file" name="file" id="imageUpload" accept=".txt, .csv">
+    </form>
+
+    <div class="image-section" style="display:none;">
+            <input type="number" min=1 max=100 step=1 value=1 name="slider1" id="slider1"  />
+            <label for="slider1">Score minimo</label>
+            <br />
+            
+            <input type="number" min=1 max=169 step=1 value=169 name="slider2" id="slider2"  />
+            <label for="slider2">Cantidad máxima de resultados para cada entrada (i.e. hasta 169 puntos ODS)</label>
+            
+        <div class="img-preview">
+            <div id="imagePreview">
+                <span id = "content_div">
+                </span>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary btn-lg " id="btn-predict">Ordenar!</button>
+        </div>
+
+    </div>
+
+                <div class="loader" style="display:none;"></div>
+            <form action='/download' method='POST' id='submitform'>
+                <h3 id="result">
+                    <span> </span>
+                </h3>
+                <button type="submit" class="btn btn-success">Descargar listado actual</button>
+            </form>
+
+</div>
+
+{% endblock %}
